@@ -1,0 +1,7 @@
+{
+  "name": "proyect-global",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
