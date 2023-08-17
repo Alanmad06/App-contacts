@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Contactos</ion-title>
+    <ion-button size="large" fill="clear" slot="end" id="modal">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-modal trigger="modal">
+    <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancelar</ion-button>
+        </ion-buttons>
+        <ion-title>Agregar Contacto</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="confirm()" [strong]="true">Borrador</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <form (ngSubmit)="agregarContacto()">
+        <ion-list [inset]="true">
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-input
+            name="Nombre"
+            placeholder="Escriba nombre del contacto"
+            [(ngModel)]="contacto.nombre"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Numero</ion-label>
+          <ion-input
+            name="Numero"
+            placeholder="Escriba numero del contacto"
+            [(ngModel)]="contacto.numero"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Nota </ion-label>
+          <ion-input
+            name="Nota"
+            placeholder="Agregar Nota"
+            [(ngModel)]="contacto.nota"
+          ></ion-input>
+        </ion-item>
+        <ion-button color="secondary" type="submit">Enviar</ion-button>
+      </ion-list>
+      </form>
+    </ion-content>
+  </ng-template>
+  </ion-modal>
+  
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let person of contactos ; let i = index" routerLink="contacto/{{i}}">
+      <ion-label>{{person.nombre}}</ion-label>
+      <p>{{person.numero}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

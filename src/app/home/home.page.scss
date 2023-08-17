@@ -25,3 +25,50 @@
 #container a {
   text-decoration: none;
 }
+
+.ion-margin-top{
+  margin-top: 40px;
+}
+
+.welcome{
+  border-radius: 30px;
+  padding: 5%;
+  margin-top: 50px;
+  
+  background-color: rgb(74, 176, 176);
+  width: 90%;
+  height: 100%;
+
+  h1{
+    
+    font-size: 50px;
+  }
+  p{
+    color: rgb(37, 46, 48);
+  }
+}
+
+.totalC{
+  border-radius: 30px;
+  margin-left: 20%;
+  padding: 5%;
+  margin-top: 20%;
+  width: 90%;
+  height: 90%;
+  background-color: azure;
+  h1{
+    
+    font-size: 50px;
+    color: rgb(37, 46, 48);
+  }
+
+  h2{
+    font-size: 40px;
+    color: rgb(21, 15, 80);
+  }
+  .ion-margin-horizontal{
+    margin: 0 50%
+  }
+
+  
+}

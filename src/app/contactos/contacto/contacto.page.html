@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>contacto</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button (click)="save()" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="container">
+ 
+  <ion-header>
+    <ion-toolbar>
+      <ion-list [inset]="true">
+      <ion-item >
+        <ion-input [(ngModel)]="contacto.nombre"></ion-input>
+     
+        <ion-input slot="end" [(ngModel)]="contacto.numero"></ion-input>
+      </ion-item>
+        
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+    <ion-content class="content">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="10">
+            <ion-input [(ngModel)]="contacto.nota"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+        
+     
+    </ion-content>
+
+  
+
+</ion-content>

@@ -1,0 +1,114 @@
+#container {
+   
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    white-space: normal;
+    
+  
+    
+   /*  left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    */
+    font-size: 20px; 
+  }
+
+  .modal{
+    margin: 50px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  ion-label.modallabel{
+    
+   
+   
+    padding: 5px; /* Agrega un espacio entre el contenido y el borde */
+    display: inline-block;
+   
+  }
+  ion-input.modalinput{
+    
+    --background: #373737;
+    --color: #fff;
+    
+  }
+  .popover{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+  }
+  h3{
+    font-size: 15px;
+  }
+
+   #date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .radio-buttons{
+    min-width: 80px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 60px; /* Reduje este valor para alinear el texto */
+  white-space: normal;
+  overflow: unset;
+  }
+  #hobbies{
+    
+    
+   min-width: 50px;
+   margin-top: 20px;
+   text-align: left;
+   padding-left: 100px;
+  }
+
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+ 
+
+  #other{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 25px;
+    border-radius: 30%;
+  }
+  
+  #input{
+    
+      font-size: 16px;
+  }
+  #date{
+    margin-top: 15px;
+  }
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }

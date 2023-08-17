@@ -233,4 +233,101 @@
 
     --ion-card-background: #1e1e1e;
   }
+
+  body {
+  --ion-color-primary: #428cff;
+  --ion-color-primary-contrast: #ffffff;
+
+  --ion-color-secondary: #50c8ff;
+  --ion-color-secondary-contrast: #ffffff;
+
+  --ion-color-tertiary: #6a64ff;
+  --ion-color-tertiary-contrast: #ffffff;
+
+  --ion-color-success: #2fdf75;
+  --ion-color-success-contrast: #000000;
+
+  --ion-color-warning: #ffd534;
+  --ion-color-warning-contrast: #000000;
+
+  --ion-color-danger: #ff4961;
+  --ion-color-danger-contrast: #ffffff;
+
+  --ion-color-dark: #000000;
+  --ion-color-dark-contrast: #ffffff;
+
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-contrast: #000000;
+
+  --ion-color-light: #1c1c1d;
+  --ion-color-light-contrast: #ffffff;
+}
+
+/* iOS Dark Theme */
+.ios body {
+  --ion-background-color: #000000;
+  --ion-text-color: #ffffff;
+  --ion-item-background: #000000;
+  --ion-card-background: #1c1c1d;
+}
+
+/* Material Design Dark Theme */
+.md body {
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --ion-border-color: #222222;
+  --ion-item-background: #1e1e1e;
+  --ion-toolbar-background: #1f1f1f;
+  --ion-tab-bar-background: #1f1f1f;
+  --ion-card-background: #1e1e1e;
+}
+
+body.dark {
+  --ion-color-primary: #428cff;
+  --ion-color-primary-contrast: #ffffff;
+
+  --ion-color-secondary: #50c8ff;
+  --ion-color-secondary-contrast: #ffffff;
+
+  --ion-color-tertiary: #6a64ff;
+  --ion-color-tertiary-contrast: #ffffff;
+
+  --ion-color-success: #2fdf75;
+  --ion-color-success-contrast: #000000;
+
+  --ion-color-warning: #ffd534;
+  --ion-color-warning-contrast: #000000;
+
+  --ion-color-danger: #ff4961;
+  --ion-color-danger-contrast: #ffffff;
+
+  --ion-color-dark: #ffffff; /* Cambiado a blanco para el modo claro */
+  --ion-color-dark-contrast: #000000;
+
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-contrast: #000000;
+
+  --ion-color-light: #1c1c1d;
+  --ion-color-light-contrast: #ffffff;
+}
+
+/* iOS Light Theme */
+.ios body.dark {
+  --ion-background-color: #ffffff; /* Cambiado a blanco para el modo claro */
+  --ion-text-color: #000000; /* Cambiado a negro para el modo claro */
+  --ion-item-background: #ffffff; /* Cambiado a blanco para el modo claro */
+  --ion-card-background: #f5f6f9; /* Cambiado a un color más claro */
+}
+
+/* Material Design Light Theme */
+.md body.dark {
+  --ion-background-color: #ffffff; /* Cambiado a blanco para el modo claro */
+  --ion-text-color: #000000; /* Cambiado a negro para el modo claro */
+  --ion-border-color: #dddddd; /* Cambiado a un color más claro */
+  --ion-item-background: #eaeaea; /* Cambiado a un color más claro */
+  --ion-toolbar-background: #f4f5f8; /* Cambiado a un color más claro */
+  --ion-tab-bar-background: #f4f5f8; /* Cambiado a un color más claro */
+  --ion-card-background: #f5f6f9; /* Cambiado a un color más claro */
+}
+
 }
