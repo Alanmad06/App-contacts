@@ -1,37 +1,91 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>contacto</ion-title>
-    <ion-buttons slot="start" >
-      <ion-back-button (click)="save()" icon="chevron-back-outline"></ion-back-button>
+<ion-header  class="header">
+  <ion-toolbar class="header__toolbar">
+   
+    <ion-buttons  slot="start">
+      <ion-back-button slot="start" (click)="save()" icon="chevron-back-outline"></ion-back-button>
+      
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="delete()" class="header__toolbar-button" >Delete</ion-button>
+
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="container">
  
-  <ion-header>
-    <ion-toolbar>
-      <ion-list [inset]="true">
-      <ion-item >
-        <ion-input [(ngModel)]="contacto.nombre"></ion-input>
-     
-        <ion-input slot="end" [(ngModel)]="contacto.numero"></ion-input>
-      </ion-item>
-        
-      </ion-list>
-    </ion-toolbar>
-  </ion-header>
+
+
+  
     <ion-content class="content">
-      <ion-grid>
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="10">
-            <ion-input [(ngModel)]="contacto.nota"></ion-input>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-list [inset]="true" lines="none"  class="modal__content-list">
       
+      <ion-item class="modal__content-item ">
+        <input
+            class="modal__input"
+              id="nombre"
+              type="text"
+              name="nombre"
+              placeholder="Nombre"
+              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Nombre'"
+              [(ngModel)]="contacto.nombre"
+              required
+            />
+            
         
-     
+      </ion-item>
+      <ion-item class="modal__content-item">
+        <input
+        class="modal__input"
+          id="numero"
+          type="tel"
+          name="numero"
+          placeholder="Numero"
+          onfocus="this.placeholder = ''"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'Numero'"
+          [(ngModel)]="contacto.numero"
+          required
+        />
+        
+      </ion-item>
+      <ion-item class="modal__content-item">
+        <textarea 
+        rows="5"
+        cols="5"
+        re
+            class="modal__input"
+              id="nota"
+              type="text"
+              name="nota"
+              placeholder="Nota"
+              onfocus="this.placeholder = ''"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Nota'"
+              [(ngModel)]="contacto.nota"
+              required
+            ></textarea>
+            
+      </ion-item>
+      <ion-item class="modal__input"> 
+        
+        <google-map height="50vh"
+        width="100vw"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)">
+        <map-marker *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions">
+        </map-marker>
+        
+         </google-map>
+
+      </ion-item>
+     </ion-list>
     </ion-content>
 
   

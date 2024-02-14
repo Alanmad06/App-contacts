@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { loginService } from 'src/app/services/login.service';
+import { loginFirebaseService } from '../services/loginFirebase.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,18 @@ export class LoginPage implements OnInit {
   password : string 
 
   constructor(private loginService : loginService ,private loadingCtrl: LoadingController , private router : Router,
-    private toastr : ToastrService) { }
+    private toastr : ToastrService, private loginFirebase: loginFirebaseService) { }
 
   ngOnInit() {
+  }
+
+
+  logInWithGoogle(){
+    this.loginFirebase.signInWithGoogle().then(res =>{
+      console.log("Response Google" , res)
+    }).catch(e =>{
+      console.log("Error Response Google", e)
+    })
   }
 
   enviar(){

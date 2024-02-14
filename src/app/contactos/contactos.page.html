@@ -1,65 +1,119 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Contactos</ion-title>
-    <ion-button size="large" fill="clear" slot="end" id="modal">
-      <ion-icon name="person-add-outline"></ion-icon>
+<ion-header class="header" translucent>
+  <ion-toolbar class="header__toolbar">
+    <ion-title class="header__toolbar-title">Contactos</ion-title>
+    <ion-button class="header__toolbar-button"  size="large" fill="clear" slot="end" id="modal" >
+      <ion-icon class="header__toolbar-icon" name="person-add-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
+<ion-content [fullscreen]="true" class="content">
   <ion-modal trigger="modal">
-    <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button (click)="cancel()">Cancelar</ion-button>
+    <ng-template class="modal">
+    <ion-header class="modal__header">
+      <ion-toolbar class="modal__toolbar">
+        <ion-buttons slot="start" class="modal__buttons">
+          <ion-button (click)="cancel()" class="modal__buttons-single ">Cancelar</ion-button>
         </ion-buttons>
-        <ion-title>Agregar Contacto</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true">Borrador</ion-button>
+        <ion-title style="
+        font-size: min(3vw,50px);" class="modal__title">Agregar Contacto</ion-title>
+        <ion-buttons slot="end" class="modal__buttons">
+          <ion-button (click)="confirm()" [strong]="true" class="modal__buttons-single ">Borrador</ion-button>
         </ion-buttons>
       </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <form (ngSubmit)="agregarContacto()">
-        <ion-list [inset]="true">
-        <ion-item>
-          <ion-label>Nombre</ion-label>
-          <ion-input
-            name="Nombre"
-            placeholder="Escriba nombre del contacto"
-            [(ngModel)]="contacto.nombre"
-          ></ion-input>
+    </ion-header >
+    <ion-content class="modal__content">
+      <form class="modal__form" (ngSubmit)="agregarContacto()">
+        <ion-list [inset]="true" lines="none"  class="modal__content-list">
+        <ion-item class="modal__content-item ">
+          <input
+              class="modal__input"
+                id="nombre"
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                onfocus="this.placeholder = ''"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Nombre'"
+                [(ngModel)]="contacto.nombre"
+                required
+              />
+              
+          
         </ion-item>
-        <ion-item>
-          <ion-label>Numero</ion-label>
-          <ion-input
-            name="Numero"
-            placeholder="Escriba numero del contacto"
+        <ion-item class="modal__content-item">
+          <input
+          class="modal__input"
+            id="numero"
+            type="tel"
+            name="numero"
+            placeholder="Numero"
+            onfocus="this.placeholder = ''"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Numero'"
             [(ngModel)]="contacto.numero"
-          ></ion-input>
+            required
+          />
+          
         </ion-item>
-        <ion-item>
-          <ion-label>Nota </ion-label>
-          <ion-input
-            name="Nota"
-            placeholder="Agregar Nota"
-            [(ngModel)]="contacto.nota"
-          ></ion-input>
+        <ion-item class="modal__content-item">
+          <textarea 
+          rows="5"
+          cols="5"
+          re
+              class="modal__input"
+                id="nota"
+                type="text"
+                name="nota"
+                placeholder="Nota"
+                onfocus="this.placeholder = ''"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Nota'"
+                [(ngModel)]="contacto.nota"
+                required
+              ></textarea>
+              
         </ion-item>
-        <ion-button color="secondary" type="submit">Enviar</ion-button>
+        <ion-item class="modal__content-item">
+          <google-map height="50vh"
+          width="100vw"
+          [center]="center"
+          [zoom]="zoom"
+          (mapClick)="addMarker($event)"
+          (mapMousemove)="move($event)"
+          >
+          <map-marker *ngFor="let markerPosition of markerPositions"
+            [position]="markerPosition"
+            [options]="markerOptions">
+          </map-marker>
+          
+           </google-map>
+        </ion-item>
+        <ion-item class="modal__content-item ">
+          <button  class="login__button" type="submit">Agregar contacto</button>
+        </ion-item>
+       
+      
       </ion-list>
       </form>
     </ion-content>
   </ng-template>
   </ion-modal>
   
-  <ion-list [inset]="true">
-    <ion-item *ngFor="let person of contactos ; let i = index" routerLink="contacto/{{i}}">
-      <ion-label>{{person.nombre}}</ion-label>
-      <p>{{person.numero}}</p>
+
+  <ion-list *ngIf="contactos.length>0" [inset]="true" lines="none" class="list">
+    <ion-item *ngFor="let person of contactos ; let i = index" routerLink="contacto/{{i}}" class="list__item">
+      <ion-label class="list__item-label">{{person.nombre}}</ion-label>
+      <p class="list__item-p">{{person.numero}}</p>
     </ion-item>
   </ion-list>
+  
+ <!--  <ion-list *ngIf="contactos.length>0" [inset]="true" lines="none" class="list">
+    <ion-item *ngFor="let person of contacs ; let i = index" routerLink="contacto/{{i}}" class="list__item">
+      <ion-label class="list__item-label">{{person?.name.display}}</ion-label>
+      <p class="list__item-p">{{person?.phones[0].number}}</p>
+    </ion-item>
+  </ion-list> -->
+  
+
 </ion-content>

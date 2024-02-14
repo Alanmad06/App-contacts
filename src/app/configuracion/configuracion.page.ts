@@ -12,18 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ConfiguracionPage implements OnInit {
 
-  user : User
-  photo : UserPhoto
-  Hobbies: any = {
-    Musica: false,
-    Programar: false,
-    Deportes: false,
-    Leer: false,
-    Cocinar: false,
-    Videojuegos: false,
-    Otros: false
-  }
-
+  saveUbication : boolean = true;
 
   constructor(private userService : userService , public photoService: PhotoService,
     private toastr : ToastrService) { 
@@ -31,34 +20,13 @@ export class ConfiguracionPage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userService.getUser()
-    Object.keys(this.Hobbies).forEach(key => {
-      this.Hobbies[key] = this.user.hobbies?.includes(key);
-    });
+  
   }
 
   actualizar(){
 
-    this.userService.setUser(this.user.nombre, this.user.apellido, this.user.email, this.setHobbies(),this.user.sexo ,this.user.birthday )
 
-  }
-  setHobbies(){
-    const hobbies = Object.keys(this.Hobbies).filter(key => this.Hobbies[key]);
-    return hobbies
   }
   
-
-  change(value:any){
-
-  }
-
-  addPhoto(){
-    this.photoService.addProfile().then(x=>{
-      this.toastr.success("Imagen Añadida Correctamente")
-    }).catch(e =>{
-      this.toastr.error(e,"Error")
-    })
-
-  }
 
 }

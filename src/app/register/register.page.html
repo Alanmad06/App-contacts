@@ -1,154 +1,91 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Register</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    
+
+    <div class="title">
+      <h1 class="title__h1">Sign Up </h1>
+    </div>
     <div toastContainer></div>
-    
+
     <form (ngSubmit)="enviar()">
       <ion-grid>
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Email</ion-label>
-            
-            <ion-input
-              id="input"
-              type="email"
-              placeholder="Enter an Email"
-              [(ngModel)]="email"
-              name="email"
-             [required]="true"
-              
-            ></ion-input>
-            
-         
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="6">
-            <ion-label>Password</ion-label>
-            <ion-input
-              id="input"
-              type="Password"
-              placeholder="Enter a Password"
-              name="password"
-             
-              [(ngModel)]="password"
-              
-             
-             
-            ></ion-input>
+        <div class="login">
           
-          </ion-col>
-        </ion-row>
+          <ion-row class="login__row">
+            <ion-col size="12" class="login__col">
+              <input
+                class="login__input"
+                type="email"
+                id="email"
+                name="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                [(ngModel)]="email"
+                placeholder="Email"
+                onfocus="this.placeholder = ''"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Email'"
+                required
+              />
+              <label for="email" class="login__label">Email</label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="login__row">
+            <ion-col size="12" class="login__col">
+              <input
+              class="login__input"
+                id="password"
+                type="password"
+                placeholder="Password"
+                name="password"
+                
+                onfocus="this.placeholder = ''"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Password'"
+                [(ngModel)]="password"
+                required
+              />
+              <label for="password" class="login__label">Password</label>
+            </ion-col>
+          </ion-row>
 
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="6">
-            <ion-label> Confirm Password</ion-label>
-            <ion-input
-              id="input"
-              type="Password"
-              placeholder="Confirm your Password"
-              name="cpassword"
-              [(ngModel)]="cpassword"
-              required
-              
-            ></ion-input>
-          </ion-col>
-        </ion-row>
+          <ion-row class="login__row">
+            <ion-col size="12" class="login__col">
+              <input
+              class="login__input"
+                id="confirm-password"
+                type="password"
+                name="cpassword"
+                placeholder="Confirm Password"
+                onfocus="this.placeholder = ''"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Confirm Password'"
+                [(ngModel)]="cpassword"
+                required
+              />
+              <label for="confirm-password" class="login__label"> Confirm Password</label>
+            </ion-col>
+          </ion-row>
+          
+          <ion-row class="login__row login__row-footer">
+          
+          <div class="login__signUpGoogle">
+            <hr class="login__signUpGoogle__hr">
+            <p class="login__signUpGoogle__p">Or get ready with </p>
+            
+            <img onclick="alert('ola')" class="login__signUpGoogle__img" src="../../assets/icon/icon-google.svg" alt="Google Icon">
+          
+            <button class="login__button" type="submit">Sign Up</button>
 
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Nombre</ion-label>
-            <ion-input id="input" placeholder="Ingresa un Nombre"
-            [(ngModel)]="nombre" name="nombre"  required="true"></ion-input>
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Apellido</ion-label>
-            <ion-input id="input" placeholder="Ingresa un Apellido"
-            [(ngModel)]="apellido" name="apellido"  required></ion-input>
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="6">
-            <ion-label> Select your Birthday </ion-label>
-          </ion-col>
-          <div id="date">
-            <br />
-            <ion-datetime name="birthday" presentation="day-month-year"
-            #date
-            [value]="birthday"
-            (onClick)="change(date)"
-             required></ion-datetime>
           </div>
+  
         </ion-row>
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="10">
-            <ion-list>
-              <ion-list-header>
-                Hobbies
-              </ion-list-header>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Musica" name="Musica">Musica</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Programar" name="Programar">Programar</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Deportes" name="Deportes">Deportes</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Leer" name="Leer">Leer</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Cocinar" name="Cocinaar">Cocinar</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Videojuegos" name="Videojuegos">Videojuegos</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="hobbies.Otros" name="Otros">Otros</ion-checkbox>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="10">
-            <ion-list inset="true" lines="none">
-              <ion-list-header>
-                Sexo
-              </ion-list-header>
-              <ion-radio-group name="sexo" [(ngModel)]="sexo"  required>
-              <ion-item>
-                <ion-radio value="Hombre">Hombre</ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-radio value="Mujer">Mujer</ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-radio value="Prefiero no Decirlo">Prefiero no Decirlo</ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-
         
-        <ion-button  type="submit">Enviar</ion-button>
+          <p routerLink="/login" class="container__p"> Already have an <strong>Account</strong> </p>
+        
+        </div>
+        
+       
       </ion-grid>
     </form>
   </div>

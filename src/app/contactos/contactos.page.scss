@@ -1,0 +1,185 @@
+.header{
+  border-radius: 0 0 10px 10px;
+
+}
+
+.header__toolbar{
+    --background:rgba(128, 0, 128, 0.081);
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 10px 10px;
+}
+
+.header__toolbar-title{
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.content{
+    --background: linear-gradient(
+    332deg,
+    rgba(148, 50, 149, 1) 5%,
+    rgba(82, 2, 85, 1) 100%
+  );
+}
+
+.header__toolbar-icon{
+  color:rgb(62, 3, 62);
+}
+
+.list{
+   background: none;
+   width: 100vw;
+   min-height: 3rem;
+   margin:0;
+   padding: 6vw 5vw;
+
+}
+
+.list__item{
+  --background :  rgba(240, 248, 255, 0.273);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 9px 14px 17px 0px #00000041
+  
+}
+/* .list__item::after{
+  content: "";
+  width: 100%;
+  
+  box-shadow: 10px 10px 10px 10px #000;
+} */
+
+
+.list__item-p{
+  margin:0;
+}
+
+.modal{
+  --background:none;
+}
+
+.modal__header{
+
+--background: none;
+
+}
+
+
+.modal__toolbar{
+  --background: rgba(170, 0, 255, 0.323);
+}
+
+.modal__content{
+  --background: rgba(108, 0, 162, 0.323);
+  background-image:url("./../../assets/purple.jpg");
+  ;
+  background-size: cover;
+  animation: login-animation 15s ease infinite;
+
+ 
+}
+.modal__title{
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+.modal__buttons-single{
+  font-family: "Poppins", sans-serif;
+}
+
+.modal__form{
+  display: flex;
+  flex-direction: column;
+}
+.modal__content-list{
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.196);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column
+}
+.modal__content-item{
+  --background: none;
+}
+
+.modal__input {
+  color: #fff;
+  resize: none;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size:medium;
+  border: 0;
+  border-bottom: 1px solid #ff89e37e;
+  transition: 500ms;
+  margin: 10px 0;
+  background: rgb(84, 12, 119);
+  background: linear-gradient(
+    54deg,
+    rgba(84, 12, 119, 1) 0%,
+    rgba(4, 2, 21, 1) 32%,
+    rgba(69, 1, 71, 1) 99%
+  );
+  background-size: 400% 400%;
+  animation: login-animation 10s ease infinite;
+  border-radius: 10px 15px 7px 0;
+  width: 100%;
+
+  &:is(:focus, :valid) {
+    /* outline-color: #76b8f1; */
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+  }
+
+  &:focus + .login__label,
+  &:valid + .login__label,
+  &:not(:placeholder-shown) + .login__label {
+    visibility: visible;
+    padding-inline: 5px;
+    transform:  scale(0.6);
+    top: 0px;
+  left: 0px;
+  }
+}
+
+
+.login__button{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background: rgba(83, 12, 119, 0.622);
+  backdrop-filter: blur(5px);
+  box-shadow: 10px 10px 10px #00000050;
+  padding: 15px 10px;
+  border-radius: 12px;
+  
+  margin-top: 20px;
+  background-size: 400% 400%;
+  animation: login-animation 10s ease infinite;
+  justify-self: center;
+  align-self: center;
+ 
+  width: 100%;
+  transition: all 500ms ease-in-out;
+  opacity: .8;
+  
+}
+
+
+
+@keyframes login-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

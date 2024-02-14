@@ -1,6 +1,6 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="header">
   <ion-toolbar>
-    <ion-title>Configuracion</ion-title>
+    <ion-title class="header__toolbar-title">Configuracion</ion-title>
     <ion-buttons slot="start" >
       <ion-back-button  icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
@@ -11,104 +11,42 @@
   
   <div id="container">
     <div toastContainer></div>
-    <form (ngSubmit)="actualizar()">
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="addPhoto()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+   
+     
       <ion-grid>
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Email</ion-label>
-            
-            <ion-input
-              id="input"
-              type="email"
-              placeholder="Enter an Email"
-              [(ngModel)]="user.email"
-              name="email"
-             [required]="true"
+        <div class="content">
+          
+          <ion-row class="login__row">
+            <ion-col size="12" class="login__col">
+              <div class="checkbox-wrapper-2" style="
+              display: flex;
+              align-items: center;
+          ">
+                <input
+                class="sc-gJwTLC ikxBAC"
+                type="checkbox"
+                id="saveUbication"
+                name="saveUbication"
+                 
+                [(ngModel)]="saveUbication"
               
-            ></ion-input>
-
-            
-            
-         
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Nombre</ion-label>
-            <ion-input id="input" placeholder="Ingresa un Nombre"
-            [(ngModel)]="user.nombre" name="nombre"  ></ion-input>
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6">
-            <ion-label>Apellido</ion-label>
-            <ion-input id="input" placeholder="Ingresa un Apellido"
-            [(ngModel)]="user.apellido" name="apellido" ></ion-input>
-          </ion-col>
-        </ion-row>
+                
+                required
+              />
+            </div>
+              <label for="saveUbication" class="login__label">Guardar Ubicacion de los contactos</label>
+              
+             
+            </ion-col>
+          </ion-row>
+          
+        </div>
+        </ion-grid>
+        
 
         
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="10">
-            <ion-list>
-              <ion-list-header>
-                Hobbies
-              </ion-list-header>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Musica" name="Musica">Musica</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Programar" name="Programar">Programar</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Deportes" name="Deportes">Deportes</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Leer" name="Leer">Leer</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Cocinar" name="Cocinaar">Cocinar</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Videojuegos" name="Videojuegos">Videojuegos</ion-checkbox>
-              </ion-item>
-              <ion-item>
-                <ion-checkbox [(ngModel)]="Hobbies.Otros" name="Otros">Otros</ion-checkbox>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-col size="10">
-            <ion-list inset="true" lines="none">
-              <ion-list-header>
-                Sexo
-              </ion-list-header>
-              <ion-radio-group name="sexo" [(ngModel)]="user.sexo"  required>
-              <ion-item>
-                <ion-radio value="Hombre">Hombre</ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-radio value="Mujer">Mujer</ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-radio value="Prefiero no Decirlo">Prefiero no Decirlo</ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-
-        
-        <ion-button type="submit">Enviar</ion-button>
-      </ion-grid>
-    </form>
+  
+      
+    
   </div>
 </ion-content>

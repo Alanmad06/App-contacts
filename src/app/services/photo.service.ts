@@ -22,7 +22,9 @@ export class PhotoService {
     this.photo={
      
       filepath: "user photo",
-      webviewPath: capturedPhoto.webPath!
+      webviewPath: capturedPhoto.webPath!,
+      path:capturedPhoto.path
+
       
     }
    

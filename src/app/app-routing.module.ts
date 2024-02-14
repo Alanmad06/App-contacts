@@ -5,18 +5,19 @@ import { authGuard } from 'src/app/guardian/auth.guardian';
 const routes: Routes = [
   {
     path: '',
-
-     loadChildren: () => import('./inicio/tabs.module').then( m => m.TabsPageModule)  ,
-     canActivate: [authGuard]
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    
+      loadChildren: () => import('./inicio/tabs.module').then( m => m.TabsPageModule)  ,
+     
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  
 
   
   {
@@ -27,8 +28,12 @@ const routes: Routes = [
   {
     path: 'configuracion',
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule),
-    canActivate: [authGuard]
+    
   },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  }
   
 ];
 

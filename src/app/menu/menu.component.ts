@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { loginFirebaseService } from '../services/loginFirebase.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +9,17 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent  implements OnInit {
 
-  @Input('name') name : string 
+ 
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private loginFirebase : loginFirebaseService) { 
 
-  ngOnInit() {}
+   
+
+  }
+
+  ngOnInit() {
+    
+  }
 
   navigate(){
     this.router.navigate(["/configuracion"])
@@ -24,6 +31,11 @@ export class MenuComponent  implements OnInit {
     const checked = event.detail.checked
     document.body.classList.toggle('dark', checked);
 
+  }
+
+  logOut(){
+this.loginFirebase.logOut()
+this.router.navigate(["/login"])
   }
 
 }

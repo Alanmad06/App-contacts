@@ -1,59 +1,54 @@
-import { Injectable } from "@angular/core";
-import { User } from "src/app/interface/user.interface";
-import { Contactos } from "../interface/contactos.interface";
-
+import { Injectable } from '@angular/core';
+import { User } from 'src/app/interface/user.interface';
+import { Contactos } from '../interface/contactos.interface';
+import { usuariosFirebaseService } from './usuariosFirebase.service';
+import { loginFirebaseService } from './loginFirebase.service';
 
 @Injectable()
-export class userService{
+export class userService {
+  user: User = {
+    email: '',
+    contactos: [],
+  };
+
+  constructor(){
+  
+   
+  }
 
 
-    user : User = {
-        nombre:"",
-        apellido: "",
-        email : "",
-        birthday : "",
-        sexo : "",
-        contactos : []
-      }
+  setUser(user : User){
+    this.user = user
+  }
 
-      setUser(nombre : string , apellido : string , email: string , hobbies : string[], sexo : string, birthday : string){
-       this.user.nombre = nombre
-       this.user.apellido = apellido
-       this.user.email = email
-       this.user.sexo = sexo
-       this.user.hobbies = hobbies
-       this.user.birthday = birthday
+  setUserEmail(email: string) {
+    this.user.email = email;
+  }
 
+  getUser() {
+    return this.user;
+  }
 
-      }
+  getContactos() {
+    return this.user.contactos;
+  }
 
-      getUser(){
-        return this.user
-      }
+  agregarContacto(contacto: Contactos) {
+    this.user.contactos?.push(contacto);
+    console.log(this.user.contactos);
+  }
 
-      getContactos(){
-        return this.user.contactos
-      }
+  getContactobyIndex(i: number) {
+    return this.user.contactos![i];
+  }
 
-      agregarContacto(contacto : Contactos){
-        this.user.contactos?.push(contacto)
+  actualizarContacto(contacto: Contactos, i: number) {
+    this.user.contactos![i] = contacto;
+  }
 
-      }
-
-      getContactobyIndex(i:number){
-        return this.user.contactos![i]
-      }
-
-      actualizarContacto(contacto: Contactos , i : number){
-        this.user.contactos![i] = contacto
-
-      }
-
-     
-
-      
-
-    
-    
-
+  deleteContacto(i: number) {
+    console.log('Delete ', this.user.contactos![i]);
+    this.user.contactos?.splice(i, 1);
+    console.log('Contacto borrado ', this.user.contactos);
+  }
 }

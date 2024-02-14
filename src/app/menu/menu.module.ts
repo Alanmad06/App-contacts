@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu.component';
+import { Router } from '@angular/router';
 
 
 
@@ -12,4 +13,9 @@ import { MenuComponent } from './menu.component';
   ],
   exports :[MenuComponent]
 })
-export class MenuModule { }
+export class MenuModule  { 
+
+  
+
+ 
+}

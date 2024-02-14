@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ContactoPageRoutingModule } from './contacto-routing.module';
 
 import { ContactoPage } from './contacto.page';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContactoPageRoutingModule
+    ContactoPageRoutingModule,
+    GoogleMapsModule
   ],
   declarations: [ContactoPage]
 })

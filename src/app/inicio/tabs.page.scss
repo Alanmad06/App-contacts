@@ -1,0 +1,28 @@
+
+.tab{
+    
+
+    background: linear-gradient(
+      332deg,
+      rgba(148, 50, 149, 1) 5%,
+      rgba(82, 2, 85, 1) 100%
+    );
+}
+.tab__bar{
+    --background: rgba(128, 0, 128, 0.564);
+    --border : linear-gradient(
+      332deg,
+      rgba(148, 50, 149, 1) 5%,
+      rgba(82, 2, 85, 1) 100%
+    );
+    
+    backdrop-filter: blur(5px);
+    border-radius: 20px 20px 0 0;
+    
+    
+}
+
+.tab__bar-button{
+    
+    --color-selected: rgb(62, 3, 62);
+}

@@ -1,40 +1,26 @@
-<ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Holaaa</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <app-menu [name]="user.nombre!"></app-menu>
+<ion-content class="content" [fullscreen]="true">
+  <app-menu ></app-menu>
+  <ion-fab class="camera" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="camera__button" (click)="sharePhoto()">
+      <ion-icon class="camera__button-icon" name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <ion-grid class="ion-margin-top">
-    <ion-row>
-      <ion-col>
-        <div class="welcome">
-          <h1>Welcome !</h1>
-          <br />
-          <ion-row>
-          <ion-col size="5"> <h2>{{user.nombre}}</h2></ion-col>
-          
-          <ion-col size="5">
-            <ion-img
-              *ngIf="photoService.photo?.webviewPath"
-              [src]="photoService.photo.webviewPath"
-            ></ion-img>
-          </ion-col>
-          </ion-row>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div class="totalC">
-          <h1>
-            <ion-icon name="people-circle-outline"></ion-icon>No. Total de
-            Contactos
-          </h1>
-          <h1 class="ion-margin-horizontal">{{getNumeroContactos()}}</h1>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="container1">
+    <div class="container__welcome">
+      <h1 class="container__welcome-h1" >Welcome !</h1>
+      <p class="container__welcome-p" >{{nombre}}</p>
+      <ion-img
+        *ngIf="photoService.photo?.webviewPath"
+        [src]="photoService.photo.webviewPath"
+      ></ion-img>
+    </div>
+
+    <div class="container__totalContactos">
+      <h1>
+        <ion-icon name="people-circle-outline"></ion-icon>No. Total de Contactos
+      </h1>
+      <h1 class="ion-margin-horizontal">{{getNumeroContactos()}}</h1>
+    </div>
+  </div>
 </ion-content>

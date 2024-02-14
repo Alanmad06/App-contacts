@@ -15,37 +15,16 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  password: string;
-  cpassword: string;
-  nombre: string;
-  apellido: string;
-  email: string;
-  sexo: string;
+  
+  private readonly emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  email: string ="";
+  password : string ="";
+  cpassword:string ="";
+  
 
-  hobbies: any = {
-    Musica: false,
-    Programar: false,
-    Deportes: false,
-    Leer: false,
-    Cocinar: false,
-    Videojuegos: false,
-    Otros: false,
-  };
 
-  birthday = format(new Date(), 'yyyy-MM-dd');
-  birthString: string;
-
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: '!',
-      message: 'Estas seguro de regstrarte sin hobbies?',
-      buttons : this.alertButtons
-      
-    });
-
-    await alert.present();
-  }
-
+  
+  
   public alertButtons = [
     {
       text: 'Cancel',
@@ -56,13 +35,11 @@ export class RegisterPage implements OnInit {
       role: 'confirm',
       handler: () => {
         this.loginService.setRegister(this.email, this.password);
-        this.userService.setUser(
-          this.nombre,
-          this.apellido,
-          this.email,
-          this.setHobbies(),
-          this.sexo,
-          this.birthString
+        this.userService.setUserEmail(
+
+          this.email
+          
+         
         );
         this.router.navigate(['/login']);
       },
@@ -81,22 +58,17 @@ export class RegisterPage implements OnInit {
 
   async enviar(): Promise<void> {
     if (this.password == this.cpassword && this.comprobar()) {
-      console.log(this.sexo);
       
-      if (this.setHobbies().length == 0) {
-        this.presentAlert()
-      } else if(this.setHobbies().length>=1){
+      
+    
         this.loginService.setRegister(this.email, this.password);
-        this.userService.setUser(
-          this.nombre,
-          this.apellido,
-          this.email,
-          this.setHobbies(),
-          this.sexo,
-          this.birthString
+        this.userService.setUserEmail(
+         
+          this.email
+          
         );
         this.router.navigate(['/login']);
-      }
+      
 
      
      
@@ -114,25 +86,10 @@ export class RegisterPage implements OnInit {
   }
 
   comprobar() {
-    const valores = [
-      this.password,
-      this.cpassword,
-      this.nombre,
-      this.apellido,
-      this.email,
-      this.sexo,
-    ];
-    return valores.every((valor) => valor !== null && valor !== undefined);
+    return this.emailPattern.test(this.email)
   }
 
-  setHobbies() {
-    const hobbies = Object.keys(this.hobbies).filter(
-      (key) => this.hobbies[key]
-    );
-    return hobbies;
-  }
+  
 
-  change(value: any) {
-    this.birthString = format(parseISO(value), 'yyyy-MM-dd');
-  }
+  
 }
