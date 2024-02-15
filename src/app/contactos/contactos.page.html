@@ -101,7 +101,7 @@
   </ion-modal>
   
 
-  <ion-list *ngIf="contactos.length>0" [inset]="true" lines="none" class="list">
+  <ion-list *ngIf="contactos && contactos.length>0" [inset]="true" lines="none" class="list">
     <ion-item *ngFor="let person of contactos ; let i = index" routerLink="contacto/{{i}}" class="list__item">
       <ion-label class="list__item-label">{{person.nombre}}</ion-label>
       <p class="list__item-p">{{person.numero}}</p>

@@ -4,16 +4,20 @@
     <ion-fab-button class="camera__button" (click)="sharePhoto()">
       <ion-icon class="camera__button-icon" name="camera"></ion-icon>
     </ion-fab-button>
+   
+    
+    
   </ion-fab>
 
   <div class="container1">
     <div class="container__welcome">
       <h1 class="container__welcome-h1" >Welcome !</h1>
-      <p class="container__welcome-p" >{{nombre}}</p>
+      <p class="container__welcome-p" >{{nombre }}</p>
       <ion-img
         *ngIf="photoService.photo?.webviewPath"
         [src]="photoService.photo.webviewPath"
       ></ion-img>
+     
     </div>
 
     <div class="container__totalContactos">

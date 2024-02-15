@@ -19,7 +19,7 @@
                 type="email"
                 id="email"
                 name="email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                
                 [(ngModel)]="email"
                 placeholder="Email"
                 onfocus="this.placeholder = ''"
@@ -73,7 +73,7 @@
             <hr class="login__signUpGoogle__hr">
             <p class="login__signUpGoogle__p">Or get ready with </p>
             
-            <img onclick="alert('ola')" class="login__signUpGoogle__img" src="../../assets/icon/icon-google.svg" alt="Google Icon">
+            <img (click)="logInWithGoogle()" class="login__signUpGoogle__img" src="../../assets/icon/icon-google.svg" alt="Google Icon">
           
             <button class="login__button" type="submit">Sign Up</button>
 

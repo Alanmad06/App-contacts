@@ -1,54 +1,29 @@
 import { Injectable } from "@angular/core"
 import { LoadingController } from "@ionic/angular"
+import { loginFirebaseService } from "./loginFirebase.service"
 
 
 @Injectable()
 export class loginService{
     
-    email : string 
-    password : string
-    islogged = false
+    
+  
 
-    constructor(private loadingCtrl: LoadingController){
+    constructor(private loadingCtrl: LoadingController, private loginFirebase : loginFirebaseService){
         
     }
 
-    async setRegister(email : string, password : string){
-        this.email = email
-        this.password = password
-        const loading = await this.loadingCtrl.create({
-            duration: 1000,
-            spinner: 'circles',
-          });
-    
-          loading.present();
+    setRegister(email : string, password : string){
+        
+        return this.loginFirebase.createUserWithEmailAndPassword(email,password)
     }
 
-    login(email : string, password : string) : Promise<boolean>  {
+    login(email : string, password : string)   {
 
-        return new Promise(async (resolve, reject)=>{
-            if(email===this.email && password===this.password){
-                const loading = await this.loadingCtrl.create({
-                    duration: 1000,
-                    spinner: 'circles'
-                  });
-              
-                  loading.present();
-                resolve(true)
-            }else{
-                reject(false)
-            }
-        })
+       return this.loginFirebase.signInWithEmailAndPassword(email,password)
 
     }
 
-    getIsLogged(){
-        return this.islogged
-    }
-
-    changeLogged(){
-        this.islogged = true
-    }
-
+  
 
 }

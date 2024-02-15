@@ -34,8 +34,10 @@ export class MenuComponent  implements OnInit {
   }
 
   logOut(){
-this.loginFirebase.logOut()
-this.router.navigate(["/login"])
+this.loginFirebase.logOut().then(res=>{
+  this.router.navigate(["/login"])
+})
+
   }
 
 }

@@ -11,7 +11,7 @@ export class userService {
     contactos: [],
   };
 
-  constructor(){
+  constructor(private usuarioFirebase : usuariosFirebaseService){
   
    
   }
@@ -21,21 +21,30 @@ export class userService {
     this.user = user
   }
 
-  setUserEmail(email: string) {
-    this.user.email = email;
-  }
+  
 
   getUser() {
     return this.user;
   }
 
+  updateContactos(){
+  
+    this.usuarioFirebase.updateContactos(this.user)
+
+  }
+  
   getContactos() {
+    if(this.user.contactos)
     return this.user.contactos;
+
+    return []
   }
 
   agregarContacto(contacto: Contactos) {
+
     this.user.contactos?.push(contacto);
-    console.log(this.user.contactos);
+    this.updateContactos()
+    
   }
 
   getContactobyIndex(i: number) {

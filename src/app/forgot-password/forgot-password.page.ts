@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { loginFirebaseService } from '../services/loginFirebase.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,14 +11,21 @@ export class ForgotPasswordPage implements OnInit {
   email: string = ""
   private readonly emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  constructor() { }
+  constructor(private loginFirebase : loginFirebaseService) { }
 
   ngOnInit() {
   }
 
   enviar(){
 
-    console.log(this.emailPattern.test(this.email))
+    if(this.emailPattern.test(this.email)){
+
+      this.loginFirebase.resetPasswordWithEmail(this.email).then(res=>{
+        console.log("Response Reset Password", res)
+      }).catch(e=>{
+        console.log("Error Response Reset Password" ,e)
+      })
+    }
 
   }
 

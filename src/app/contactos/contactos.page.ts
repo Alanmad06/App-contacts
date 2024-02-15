@@ -5,6 +5,7 @@ import { IonModal } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { Contacts } from '@capacitor-community/contacts';
 import { Geolocation } from '@capacitor/geolocation';
+import { usuariosFirebaseService } from '../services/usuariosFirebase.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ContactosPage implements OnInit {
 
   @ViewChild(IonModal) modal: IonModal;
   contacs :any[] =[]
-  contactos : Contactos[] =[ ]
+  contactos : Contactos[] =[]
   contacto : Contactos = this.resetContacto()
   center : google.maps.LatLngLiteral ;
   zoom : any;
@@ -26,7 +27,14 @@ export class ContactosPage implements OnInit {
   markerOptions: google.maps.MarkerOptions;
 
 
-  constructor( private userService : userService , private toastr : ToastrService) { }
+  constructor( private userService : userService , private toastr : ToastrService, private usuariosFirebase : usuariosFirebaseService) {
+
+    this.usuariosFirebase.getUsuarios().subscribe(res=>{
+      if(res)
+      this.contactos = res[0].contactos!
+    })
+
+   }
 
   ngOnInit() {
     this.getContacts()
@@ -59,7 +67,6 @@ export class ContactosPage implements OnInit {
       this.contacto.latitud = ""+this.markerPositions[0].lat
       this.contacto.longitud = ""+this.markerPositions[0].lng
     }
-
   }
 
   agregarContacto(){

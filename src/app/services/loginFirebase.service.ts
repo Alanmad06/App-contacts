@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
-import { Auth, GoogleAuthProvider, User, authState, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from "@angular/fire/auth";
-import { BehaviorSubject } from "rxjs";
+import { Auth, GoogleAuthProvider, User, authState, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from "@angular/fire/auth";
+import { BehaviorSubject, Observable } from "rxjs";
 import { usuariosFirebaseService } from "./usuariosFirebase.service";
 import { User as UserI } from "../interface/user.interface";
 
@@ -36,7 +36,8 @@ export class loginFirebaseService{
           
           if(user){
             let userAux : UserI  ={
-                email : user.email!
+                email : user.email!,
+                contactos : []
             }
             this.usuariosFirebase.addUsuario(userAux).then(res =>{
                 console.log("User registered Firestore",res)
@@ -54,8 +55,16 @@ export class loginFirebaseService{
        }
 
        logOut(){
-        this.auth.signOut()
+        this.authStateSubject.next(null)
+        this.usuariosFirebase.destroyUser()
+        return this.auth.signOut()
        }
+
+
+    resetPasswordWithEmail(email : string){
+       return sendPasswordResetEmail(this.auth,email)
+
+    }
          
     
 

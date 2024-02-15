@@ -8,6 +8,7 @@ import { User } from 'src/app/interface/user.interface';
 import { loginService } from 'src/app/services/login.service';
 import { userService } from 'src/app/services/user.service';
 import { PhotoService } from '../services/photo.service';
+import { loginFirebaseService } from '../services/loginFirebase.service';
 
 @Component({
   selector: 'app-register',
@@ -25,49 +26,32 @@ export class RegisterPage implements OnInit {
 
   
   
-  public alertButtons = [
-    {
-      text: 'Cancel',
-      role: 'cancel',
-    },
-    {
-      text: 'Confirmar',
-      role: 'confirm',
-      handler: () => {
-        this.loginService.setRegister(this.email, this.password);
-        this.userService.setUserEmail(
 
-          this.email
-          
-         
-        );
-        this.router.navigate(['/login']);
-      },
-    },
-  ];
   constructor(
     private userService: userService,
     private loginService: loginService,
     private toast: ToastrService,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private loginFirebase : loginFirebaseService
   ) {}
 
   ngOnInit() {}
 
-  async enviar(): Promise<void> {
+  enviar(){
     if (this.password == this.cpassword && this.comprobar()) {
       
       
     
-        this.loginService.setRegister(this.email, this.password);
-        this.userService.setUserEmail(
-         
-          this.email
-          
-        );
-        this.router.navigate(['/login']);
+        this.loginService.setRegister(this.email, this.password).then(user =>{
+          console.log("User Register :",user)
+          this.router.navigate(['/']);
+        }).catch(e=>{
+          console.log("Error User Register", e)
+        })
+        
+       
       
 
      
@@ -90,6 +74,17 @@ export class RegisterPage implements OnInit {
   }
 
   
-
+  logInWithGoogle(){
+    this.loginFirebase.signInWithGoogle().then(res =>{
+      console.log("Response Google" , res)
+      this.router.navigate(['/'])
+      
+    }).catch(e =>{
+      console.log("Error Response Google", e)
+    }).finally(()=>{
+      this.router.navigate(['/'])
+    })
+    
+  }
   
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "703924612126",
+    "project_id": "contactos-app-7c389",
+    "storage_bucket": "contactos-app-7c389.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703924612126:android:858a47f7a9c557c8f6920f",
+        "android_client_info": {
+          "package_name": "com.contactosApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703924612126-02kkbnpl6n6ar4ude8k86agqisjjebdh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.contactosApp",
+            "certificate_hash": "35fba3657d611426d3adafc227ae12a5c222251d"
+          }
+        },
+        {
+          "client_id": "703924612126-h5qknj5slm16mni1rt4e0fhahroqnhll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVMtuWaDMyrjmWIcXaZB84_RkRrIkrtlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703924612126-h5qknj5slm16mni1rt4e0fhahroqnhll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

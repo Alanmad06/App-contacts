@@ -11,21 +11,21 @@ import {
   updateDoc,
   where,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interface/user.interface';
-
+import { getDocs } from 'firebase/firestore';
 
 export class usuariosFirebaseService {
   firestore: Firestore = inject(Firestore);
   usuariosCollection: CollectionReference;
-  usuario: Observable<User[] | null> ;
+  usuario: BehaviorSubject<User[] | null> = new BehaviorSubject<User[] | null>(
+    null
+  );
 
   constructor() {
     this.usuariosCollection = collection(this.firestore, 'usuarios');
-    const q = query(this.usuariosCollection);
 
-    this.usuario = collectionData(q) as Observable<User[]>
-    
+    //this.usuario = collectionData(this.usuariosCollection) as Observable<User[]>
   }
 
   getUserByEmail(usuario: User) {
@@ -36,23 +36,33 @@ export class usuariosFirebaseService {
     return this.usuario;
   }
 
-  getUsuario(usuario : User){
-    const getEmail = this.getUserByEmail(usuario);
-      this.usuario = collectionData(getEmail,{idField : 'id'}) as Observable<User[]>
-  }
-
   addUsuario(usuario: User) {
     return new Promise((resolve, reject) => {
       const getEmail = this.getUserByEmail(usuario);
-      console.log("Query ", getEmail)
-      
-    
+      const res = collectionData(getEmail, { idField: 'id' }) as Observable<
+        User[]
+      >;
+      res.subscribe((observer) => {
+        this.usuario.next(observer);
+      });
 
+      console.log('query ', getEmail, ' Ususairo ', usuario);
+
+      getDocs(getEmail)
+        .then((querySnapshot) => {
+          if (querySnapshot.empty) {
+            resolve(addDoc(this.usuariosCollection, usuario));
+          } else {
+            reject('Usuario Ya registrado');
+          }
+        })
+        .catch((error) => {
+          console.error('Error al realizar la consulta:', error);
+        });
+
+      getDocs(getEmail);
       if (!getEmail) {
-       
-        resolve(addDoc(this.usuariosCollection, usuario));
       } else {
-        reject('Usuario Ya registrado');
       }
     });
   }
@@ -66,8 +76,13 @@ export class usuariosFirebaseService {
 
   updateContactos(usuario: User) {
     let docRef = doc(this.firestore, 'usuarios', usuario.id!);
+    
     updateDoc(docRef, {
       contactos: usuario.contactos,
     });
+  }
+
+  destroyUser() {
+    this.usuario = new BehaviorSubject<User[] | null>(null);
   }
 }

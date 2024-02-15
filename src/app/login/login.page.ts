@@ -25,18 +25,21 @@ export class LoginPage implements OnInit {
   logInWithGoogle(){
     this.loginFirebase.signInWithGoogle().then(res =>{
       console.log("Response Google" , res)
+     
+      
     }).catch(e =>{
       console.log("Error Response Google", e)
     })
+    this.router.navigate(['/'])
   }
 
   enviar(){
 
-    this.loginService.login(this.email,this.password).then(async x=>{
+    this.loginService.login(this.email,this.password).then( x=>{
 
    
        
-        this.loginService.changeLogged()
+        console.log(x)
         this.router.navigate(['/'])
         
       
