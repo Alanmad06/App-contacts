@@ -29,6 +29,8 @@
   background-size: 400% 400%;
   animation: login-animation 10s ease infinite;
   align-self: flex-start;
+  display: flex;
+  flex-direction: column;
   width: 70%;
   height: 20%;
   padding: 20px;
@@ -65,6 +67,18 @@
   background-size: 500% 500%;
   align-self: flex-end;
   width: 70%;
+}
+
+.container__img{
+  background-size: cover;
+  position: relative;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  align-self: end;
+  justify-self: end;
+  right: 30px;
+
 }
 
 .camera{

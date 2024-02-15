@@ -3,6 +3,7 @@ import { Auth, GoogleAuthProvider, User, authState, createUserWithEmailAndPasswo
 import { BehaviorSubject, Observable } from "rxjs";
 import { usuariosFirebaseService } from "./usuariosFirebase.service";
 import { User as UserI } from "../interface/user.interface";
+import { storageService } from "./storage.service";
 
 @Injectable()
 export class loginFirebaseService{
@@ -12,7 +13,7 @@ export class loginFirebaseService{
     authStateSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
 
-    constructor(private usuariosFirebase : usuariosFirebaseService){
+    constructor(private usuariosFirebase : usuariosFirebaseService , private storageFirebase : storageService){
         this.onAuthStateChange();
     }
 
@@ -37,8 +38,12 @@ export class loginFirebaseService{
           if(user){
             let userAux : UserI  ={
                 email : user.email!,
-                contactos : []
+                contactos : [],
+                pfp: ""
             }
+           
+
+            console.log("Usuario Aux ", userAux)
             this.usuariosFirebase.addUsuario(userAux).then(res =>{
                 console.log("User registered Firestore",res)
             }).catch(e =>{

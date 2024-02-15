@@ -13,10 +13,10 @@
     <div class="container__welcome">
       <h1 class="container__welcome-h1" >Welcome !</h1>
       <p class="container__welcome-p" >{{nombre }}</p>
-      <ion-img
-        *ngIf="photoService.photo?.webviewPath"
-        [src]="photoService.photo.webviewPath"
-      ></ion-img>
+      <img class="container__img"
+        *ngIf="user.pfp"
+        [src]="user.pfp"
+      >
      
     </div>
 

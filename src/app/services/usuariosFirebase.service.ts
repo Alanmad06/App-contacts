@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   CollectionReference,
   Firestore,
@@ -14,15 +14,17 @@ import {
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interface/user.interface';
 import { getDocs } from 'firebase/firestore';
+import { storageService } from './storage.service';
 
+@Injectable()
 export class usuariosFirebaseService {
-  firestore: Firestore = inject(Firestore);
+   firestore: Firestore = inject(Firestore);
   usuariosCollection: CollectionReference;
   usuario: BehaviorSubject<User[] | null> = new BehaviorSubject<User[] | null>(
     null
   );
 
-  constructor() {
+  constructor(private storageFirebase : storageService) {
     this.usuariosCollection = collection(this.firestore, 'usuarios');
 
     //this.usuario = collectionData(this.usuariosCollection) as Observable<User[]>
@@ -80,6 +82,17 @@ export class usuariosFirebaseService {
     updateDoc(docRef, {
       contactos: usuario.contactos,
     });
+  }
+
+  addPfp(usuario : User){
+
+let docRef = doc(this.firestore, 'usuarios', usuario.id!);
+ this.storageFirebase.getRealImage(usuario.email).then(img=>{
+  updateDoc(docRef, {
+    pfp: img
+  });
+ })
+
   }
 
   destroyUser() {

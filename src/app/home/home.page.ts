@@ -20,6 +20,7 @@ export class HomePage {
     email: '',
   };
   nombre: string;
+  
   reg = new RegExp(/^.*(?=@)/);
   private userSubscription: Subscription;
 
@@ -54,6 +55,8 @@ export class HomePage {
   }
 
   async sharePhoto() {
-    this.photoService.addProfile();
+    this.photoService.addProfile(this.user).then(res =>{
+      this.usuariosFirebase.addPfp(this.user)
+    })
   }
 }

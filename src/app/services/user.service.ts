@@ -53,6 +53,7 @@ export class userService {
 
   actualizarContacto(contacto: Contactos, i: number) {
     this.user.contactos![i] = contacto;
+    this.usuarioFirebase.updateContactos(this.user)
   }
 
   deleteContacto(i: number) {

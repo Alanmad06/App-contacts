@@ -7,6 +7,8 @@ export interface User{
     id?:string
     email : string
     contactos ?: Contactos[]
+    pfpReference?: string
+    pfp?: string
 
    
    

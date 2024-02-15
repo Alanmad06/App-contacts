@@ -27,7 +27,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 @NgModule({
     declarations: [AppComponent],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, userService, loginService , authGuard ,loginFirebaseService
-        ,storageService,usuariosFirebaseService, GoogleAuthProvider
+        ,storageService,usuariosFirebaseService, GoogleAuthProvider ,
         
         
     
