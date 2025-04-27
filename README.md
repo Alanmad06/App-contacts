@@ -17,10 +17,11 @@ Frontend: Ionic Framework, Angular 16, TypeScript, CSS.
 Backend: Firebase (Authentication, Firestore).
 
 APIs: Google Authentication API, Google Maps API  |
-![image](https://github.com/user-attachments/assets/aa78e134-7664-4405-a98a-a4c2ce3d8bc9)
-![image](https://github.com/user-attachments/assets/dfc72709-1674-45da-a5e8-37518dc6dae5)
-![image](https://github.com/user-attachments/assets/977ca55b-75ba-4221-a68e-44aca430331a)
-![image](https://github.com/user-attachments/assets/5ff23fa9-c6a2-494e-9deb-19b192d6b914)
-![image](https://github.com/user-attachments/assets/4af59c7c-4b3e-47dd-82a8-3bb6bd5edb3e)
+![image](https://github.com/user-attachments/assets/a49691b5-2074-4f07-a3df-4b586d57b8ac)
+![image](https://github.com/user-attachments/assets/1a58a8e1-257e-4236-b673-282c6dbe5f1a)
+![image](https://github.com/user-attachments/assets/fca85879-8ce6-4856-99af-ddce427e2dff)
+![image](https://github.com/user-attachments/assets/59bb2b48-c5e6-43e2-b5cd-08e3f8cabd5a)
+![image](https://github.com/user-attachments/assets/e4554347-8369-4f7f-b3ff-4b1dc4d3b6dc)
+
 
 
